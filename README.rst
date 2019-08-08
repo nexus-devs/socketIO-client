@@ -138,8 +138,10 @@ Define different namespaces on a single socket. ::
 
     class ChatNamespace(BaseNamespace):
 
+        def __init__(self, io, path, id):
+            self.id = id
         def on_aaa_response(self, *args):
-            print('on_aaa_response', args)
+            print(self.id + ': on_aaa_response', args)
 
     class NewsNamespace(BaseNamespace):
 
@@ -147,7 +149,7 @@ Define different namespaces on a single socket. ::
             print('on_aaa_response', args)
 
     socketIO = SocketIO('localhost', 8000)
-    chat_namespace = socketIO.define(ChatNamespace, '/chat')
+    chat_namespace = socketIO.define(ChatNamespace, '/chat', 'myId')
     news_namespace = socketIO.define(NewsNamespace, '/news')
 
     chat_namespace.emit('aaa')
