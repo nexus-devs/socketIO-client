@@ -1,3 +1,5 @@
-recursive-include socketIO_client_nexus *
-include *.html *.js *.rst LICENSE
+include *.rst LICENSE
+include socketIO_client_nexus/tests/*.js socketIO_client_nexus/tests/*.html socketIO_client_nexus/tests/ssl.crt socketIO_client_nexus/tests/ssl.key socketIO_client_nexus/tests/package.json
 global-exclude *.pyc
+recursive-exclude missions *.md
+exclude missions/Done
